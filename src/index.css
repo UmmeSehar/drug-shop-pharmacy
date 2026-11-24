@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: #07221f;
+  color: #f4fbf8;
+}
+
+.perspective-1400 {
+  perspective: 1400px;
+}
+
+@keyframes slowMoFloat3D {
+  0%, 100% {
+    transform: translateY(0px) rotateY(-5deg) rotateX(2deg) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) rotateY(5deg) rotateX(-2deg) scale(1.02);
+  }
+}
+
+@keyframes slowMoPulse3D {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-5px) scale(1.018);
+  }
+}
+
+@keyframes overstockConveyor {
+  0% {
+    transform: translate3d(0%, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.slowmo-3d-hero {
+  transform-style: preserve-3d;
+  animation: slowMoFloat3D 7.5s ease-in-out infinite;
+  transition: transform 0.35s ease;
+  cursor: zoom-in;
+}
+
+.slowmo-3d-hero.is-zoomed {
+  animation: none;
+  transform: scale(1.1);
+  cursor: zoom-out;
+  z-index: 25;
+}
+
+.slowmo-3d-card {
+  transform-style: preserve-3d;
+  animation: slowMoPulse3D 8s ease-in-out infinite;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.slowmo-3d-card:hover {
+  transform: translateY(-8px) rotateY(4deg) rotateX(-2deg);
+  box-shadow: 0 24px 42px -12px rgba(3, 20, 18, 0.55);
+}
+
+.overstock-track {
+  display: flex;
+  width: max-content;
+  animation: overstockConveyor 36s linear infinite;
+}
+
+.overstock-track:hover {
+  animation-play-state: paused;
+}
+
+.overstock-wall {
+  background-color: #e9f2ed;
+  background-image:
+    linear-gradient(335deg, rgba(13, 59, 52, 0.06) 23px, transparent 23px),
+    linear-gradient(155deg, rgba(13, 59, 52, 0.06) 23px, transparent 23px),
+    linear-gradient(335deg, rgba(13, 59, 52, 0.06) 23px, transparent 23px),
+    linear-gradient(155deg, rgba(13, 59, 52, 0.06) 23px, transparent 23px);
+  background-size: 58px 58px;
+  background-position: 0px 2px, 4px 35px, 29px 31px, 34px 6px;
+}
